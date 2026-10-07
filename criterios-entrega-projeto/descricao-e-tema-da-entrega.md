@@ -60,6 +60,7 @@ Controle de acervo e empréstimos de um ponto de leitura de bairro.
 Independentemente do tema sorteado.
 
 ### Estrutura de pastas
+```
 nome-do-sistema/
 ├── main.py
 ├── requirements.txt
@@ -71,6 +72,7 @@ nome-do-sistema/
     ├── models/        # classes e regras
     ├── controllers/   # casos de uso
     └── routes/        # endereços e códigos HTTP
+```
 
 *Não invente outra organização. Copie a do repositório modelo.*
 
