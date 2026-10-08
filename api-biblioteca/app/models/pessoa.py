@@ -37,4 +37,18 @@ class Pessoa:
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}(id={self._id}, nome='{self._nome}')"
 
-    
+from app.data.pessoas_mock import PESSOAS
+from app.models.leitor import Leitor
+from app.models.bibliotecario import Bibliotecario
+
+PERFIS = {
+    "leitor": Leitor,
+    "bibliotecario": Bibliotecario
+}
+
+def carregar_pessoas():
+    pessoas_obj = []
+    for p in PESSOAS:
+        ClassePerfil = PERFIS.get(p["perfil"], Leitor)
+        pessoas_obj.append(ClassePerfil(id=p["id"], nome=p["nome"], email=p["email"]))
+    return pessoas_obj
