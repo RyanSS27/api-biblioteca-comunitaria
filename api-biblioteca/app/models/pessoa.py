@@ -2,7 +2,7 @@ import re
 
 class Pessoa:
     LIMITE_EMPRESTIMOS = 0
-    PODE_CADASTRAR_LIVRO = false
+    PODE_CADASTRAR_LIVRO = False
     
     def __init__(self, id: int, nome: str, email: str):
         self._id = id
