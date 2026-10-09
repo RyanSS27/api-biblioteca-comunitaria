@@ -31,7 +31,7 @@ class LivroRequest(BaseModel):
 def listar_livros():
     return livro_ctrl.listar_livros()
 
-@router.get("/livros/disponiveis") # Deve vir antes de /{id} para o FastAPI não confundir
+@router.get("/livros/disponiveis")
 def listar_livros_disponiveis():
     ids_emprestados = emprestimo_ctrl.obter_ids_livros_emprestados()
     return livro_ctrl.listar_livros_disponiveis(ids_emprestados)
@@ -49,7 +49,7 @@ def cadastrar_livro(req: LivroRequest):
     if not pessoa:
         raise HTTPException(status_code=404, detail="Usuário não encontrado.")
     
-    # POLIMORFISMO NA PRÁTICA: Avaliando permissão sem usar "if" verificando a classe
+    # POLIMORFISMO: Avaliando permissão sem usar "if" verificando a classe
     if not pessoa.get("pode_cadastrar_livro"):
         raise HTTPException(status_code=403, detail="Você não tem permissão para cadastrar livros.")
     
@@ -89,7 +89,7 @@ def registrar_emprestimo(req: EmprestimoRequest):
     try:
         return emprestimo_ctrl.registrar_emprestimo(req.id_livro, req.id_pessoa, pessoa)
     except ValueError as e:
-        # Traduzindo ValueError baseado no contexto (409 para conflito de estado, 422 para regra de negócio)
+        # Aqui usei para traduzir ValueError baseado no contexto (409 para conflito de estado, 422 para regra de negócio)
         if "CONFLITO" in str(e):
             raise HTTPException(status_code=409, detail=str(e).replace("CONFLITO: ", ""))
         raise HTTPException(status_code=422, detail=str(e))
