@@ -61,6 +61,7 @@ python verificar.py
 ```
 
 **Saída do script de verificação:**
+
 ![Diagrama de Classes](./documentacao/saida-script-verificacao.jpeg)
 
 ---
