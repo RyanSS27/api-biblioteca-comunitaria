@@ -61,7 +61,7 @@ python verificar.py
 ```
 
 **Saída do script de verificação:**
-![Diagrama de Classes](./saida-script-verificacao.jpeg)
+![Diagrama de Classes](./documentacao/saida-script-verificacao.jpeg)
 
 ---
 
@@ -69,7 +69,7 @@ python verificar.py
 
 Abaixo está o diagrama demonstrando as 3 entidades principais, a hierarquia de `Pessoa` e o vínculo feito pelo `Emprestimo`.
 
-![Diagrama de Classes](./diagrama-classes.png)
+![Diagrama de Classes](./documentacao/diagrama-classes.png)
 
 ---
 
