@@ -2,27 +2,26 @@ import re
 
 class Pessoa:
     LIMITE_EMPRESTIMOS = 0
-    PODE_CADASTRAR_LIVRO = false
+    PODE_CADASTRAR_LIVRO = False
     
     def __init__(self, id: int, nome: str, email: str):
         self._id = id
         self._nome = ""
         self._email = ""
         
+        # Isso vai chamar os métodos alteradores obrigatoriamente
+        self.alterar_nome(nome)
+        self.alterar_email(email)
         
     def alterar_nome(self, nome: str):
         if not isinstance(nome, str) or not nome.strip() or len(nome.strip()) < 3:
             raise ValueError("O nome deve ser um texto válido, não vazio, com pelo menos 3 caracteres.")
-        
         self._nome = nome.strip()
-
 
     def alterar_email(self, email: str):
         padrao_email = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-        
         if not isinstance(email, str) or not email.strip() or not re.match(padrao_email, email.strip()):
             raise ValueError("O email deve ser um texto não vazio em um formato válido (ex: nome@dominio.com).")
-        
         self._email = email.strip()
 
     def mostrar(self) -> dict:
